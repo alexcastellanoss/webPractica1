@@ -1,22 +1,14 @@
 import './App.css'
-
-import { useState } from "react";
+import Buscador from './components/Buscador.jsx'
+import Favoritos from './components/Favoritos.jsx'
 
 export default function App() {
-  const [inputValue, setInputValue] = useState(""); // estado inicial vacío
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value); // actualizamos el estado con lo que escribimos
-  };
-
   return (
-    <div>
-      <input
-        value={inputValue}    // el input muestra lo que hay en el estado
-        onChange={handleChange} // cuando escribes, llamamos a handleChange
-        placeholder="Escribe algo"
-      />
-      <p>Has escrito: {inputValue}</p>
+    <div className='main'>
+      <div className='header'>
+        <Buscador></Buscador>
+      </div>
+      <Favoritos></Favoritos>
     </div>
-  );
+  )
 }

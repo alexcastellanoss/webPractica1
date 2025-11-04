@@ -1,0 +1,45 @@
+.form-buscador {
+    display: flex;
+    align-items: center;
+    background-color: #9c9c9c;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 5% 5% 10% 5%;
+    width: 90%;
+    /* ocupa casi todo el ancho en móviles */
+    box-sizing: border-box;
+    /* para que padding no aumente el ancho */
+}
+
+.input-buscador {
+    flex: 1;
+    color: #000000;
+    border: 2px solid #3a3a3a;
+    background-color: #838383;
+    outline: none;
+    border-radius: 10px;
+    padding: 0.8em;
+    margin-right: 0.5em;
+    font-size: 1rem;
+    min-width: 0;
+    /* evita overflow en flex */
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em;
+    color: rgb(1, 0, 60);
+}
+
+.button:hover {
+    color: rgb(0, 72, 255);
+}
+
+#icono {
+    font-size: 2rem;
+}
