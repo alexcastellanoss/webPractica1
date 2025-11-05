@@ -5,9 +5,8 @@ import Favoritos from './components/Favoritos.jsx'
 export default function App() {
   return (
     <div className='main'>
-      <div className='header'>
-        <Buscador></Buscador>
-      </div>
+      <Buscador></Buscador>
+
       <Favoritos></Favoritos>
     </div>
   )

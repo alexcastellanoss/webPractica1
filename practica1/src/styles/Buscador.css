@@ -1,29 +1,26 @@
 .form-buscador {
     display: flex;
     align-items: center;
-    background-color: #9c9c9c;
+    flex-direction: row;
+    background-color: #ffffff;
     border-radius: 10px;
     padding: 0.5em;
-    margin: 5% 5% 10% 5%;
+    margin: 3% 2% 10% 5%;
     width: 90%;
-    /* ocupa casi todo el ancho en móviles */
     box-sizing: border-box;
-    /* para que padding no aumente el ancho */
 }
 
 .input-buscador {
+    display: flex;
     flex: 1;
     color: #000000;
-    border: 2px solid #3a3a3a;
-    background-color: #838383;
+    border: 2px solid #ffffff;
     outline: none;
     border-radius: 10px;
-    padding: 0.8em;
-    margin-right: 0.5em;
-    font-size: 1rem;
-    min-width: 0;
-    /* evita overflow en flex */
+    padding: 0em 0em 0em 0.5em;
+    font-size: 1.5rem;
 }
+
 
 .button {
     display: flex;
@@ -33,11 +30,11 @@
     border: none;
     cursor: pointer;
     padding: 0.5em;
-    color: rgb(1, 0, 60);
+    color: rgb(103, 103, 103);
 }
 
 .button:hover {
-    color: rgb(0, 72, 255);
+    color: rgb(0, 0, 0);
 }
 
 #icono {

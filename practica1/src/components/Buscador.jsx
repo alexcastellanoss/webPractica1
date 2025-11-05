@@ -2,7 +2,7 @@ import '../styles/Buscador.css'
 import { IoSearch } from "react-icons/io5";
 
 
-export default function Buscador() {
+export default function Buscador({ onSearch }) {
 
     return (
         <form className='form-buscador'>
@@ -10,7 +10,7 @@ export default function Buscador() {
                 id='input'
                 className='input-buscador'
                 type='text'
-                placeholder='Buscar..'
+                placeholder='Buscar...'
             />
             <button className='button' type='submit'>
                 <IoSearch id='icono' />
