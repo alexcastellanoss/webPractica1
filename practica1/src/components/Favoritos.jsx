@@ -1,11 +1,14 @@
-// import { CiHeart } from "react-icons/ci";
 import '../styles/Favoritos.css'
 
-export default function Favoritos() {
+export default function Favoritos({ favoritosList }) {
     return (
         <div className="favoritos">
-            <b>Favoritos:</b>
-            {/* <CiHeart className="icono-favoritos" /> */}
+            <b>Favoritos ({favoritosList.length}):</b>
+            <ul className="favoritos-list">
+                {favoritosList.map(fav => (
+                    <li key={fav.id}>- {fav.name}</li>
+                ))}
+            </ul>
         </div>
     )
 }

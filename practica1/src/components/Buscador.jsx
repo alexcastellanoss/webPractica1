@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 export default function Buscador({ onSearch }) {
 
-    const [query, setQuery] = useState(' ')
+    const [query, setQuery] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
