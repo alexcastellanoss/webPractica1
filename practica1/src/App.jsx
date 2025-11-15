@@ -21,7 +21,7 @@ export default function App() {
   const [showData, setShowData] = useState([])
   const [query, setQuery] = useState('')
   const [favoritosList, setFavoritosList] = useState(getInitialFavs)
-  // const [selectedShow, setSelectedShow] = useState(null)
+  const [selectedShow, setSelectedShow] = useState(null)
 
   // Sincronizar favoritos con localStorage cada vez que cambian
   useEffect(() => {
@@ -52,8 +52,20 @@ export default function App() {
   }
 
   // Funciones del Modal
+  async function openModal(showId) {
+    try {
+      const resultado = await fetch(`https://api.tvmaze.com/shows/${showId}`);
+      const data = await resultado.json();
+      setSelectedShow(data);
+    } catch (error) {
+      console.error("Error fetching show details:", error);
+    }
+  }
 
   // Cerrar Modal
+  function closeModal() {
+    setSelectedShow(null);
+  }
 
   // Llamada a la API
   useEffect(() => {
@@ -81,6 +93,7 @@ export default function App() {
               key={item.show.id}
               showData={item.show}
               onFavorite={handleFavorite}
+              onShowDetail={openModal}
               isFavorite={favoritosList.some(fav => fav.id === item.show.id)}
             />
           ))}
@@ -88,7 +101,14 @@ export default function App() {
 
       </div>
       <Favoritos favoritosList={favoritosList}></Favoritos>
-      <Modal></Modal>
+
+      {/*Si hay una serie seleccionada se renderiza el componente Modal, sino no*/}
+      {selectedShow && (
+        <Modal
+          show={selectedShow}
+          onClose={closeModal}
+        />
+      )}
     </div>
   )
 }

@@ -1,0 +1,70 @@
+.show-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.show-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.show-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.show-name {
+    margin: 0 0 10px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    height: 2.8em;
+    overflow: hidden;
+    line-height: 1.4em;
+    color: #333;
+}
+
+.favorite-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 15px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f0f2f5;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.favorite-button:hover {
+    background-color: #e0e4eb;
+}
+
+.favorite-active {
+    background-color: #ffc107;
+    color: #333;
+    border-color: #ffc107;
+}
+
+.favorite-active:hover {
+    background-color: #e0ac00;
+}
+
+.favorite-icon {
+    margin-right: 5px;
+    font-size: 1.3em;
+}

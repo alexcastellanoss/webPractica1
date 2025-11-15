@@ -16,3 +16,11 @@
     padding: 8px;
     font-size: 1em;
 }
+
+@media (max-width: 1024px) {
+    .favoritos {
+        width: 95%;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+}

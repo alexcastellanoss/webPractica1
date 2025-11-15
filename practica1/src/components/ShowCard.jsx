@@ -1,16 +1,17 @@
 import '../styles/ShowCard.css'
 import { CiHeart, CiStar } from "react-icons/ci";
 
-export default function ShowCard({ showData, onFavorite, isFavorite }) {
+export default function ShowCard({ showData, onFavorite, isFavorite, onShowDetail }) {
 
     const { name, image, id } = showData
-    const imageUrl = image.medium
+    // Si no hay imágen disponible para la serie no podemos acceder a "image.medium" por lo que ponemos cualquier valor ("Null").
+    const imageUrl = image ? image.medium : "Null"
 
     const Icon = isFavorite ? CiStar : CiHeart;
     const buttonText = isFavorite ? "Quitar Favorito" : "Añadir Favorito";
 
     const handleCardClick = () => {
-
+        if (onShowDetail) onShowDetail(id);
     };
 
     return (
