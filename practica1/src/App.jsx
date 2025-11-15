@@ -5,14 +5,27 @@ import ShowCard from './components/ShowCard.jsx'
 import Modal from './components/Modal.jsx'
 import { useState, useEffect } from 'react'
 
+// Función para obtener favoritos de localStorage
+const getInitialFavs = () => {
+  try {
+    const storedFavs = localStorage.getItem("favorito");
+    return storedFavs ? JSON.parse(storedFavs) : [];
+  } catch (e) {
+    console.error("Error cargando los favoritos:", e);
+    return [];
+  }
+};
+
 export default function App() {
 
+  const [showData, setShowData] = useState([])
   const [query, setQuery] = useState('')
   const [favoritosList, setFavoritosList] = useState(getInitialFavs)
+  // const [selectedShow, setSelectedShow] = useState(null)
 
   // Sincronizar favoritos con localStorage cada vez que cambian
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favoritosList));
+    localStorage.setItem("favorito", JSON.stringify(favoritosList));
   }, [favoritosList]);
 
   // Función de Búsqueda
@@ -20,14 +33,57 @@ export default function App() {
     setQuery(newQuery)
   }
 
+  // Añadir o quitar favoritos
+  function handleFavorite(show) {
+    const oldList = favoritosList;
+    let newList;
 
+    let isFavorite = oldList.some(fav => fav.id === show.id)
+
+    if (isFavorite) {
+      newList = oldList.filter(fav => fav.id !== show.id);
+    }
+    else {
+      const newFavorite = { id: show.id, name: show.name };
+      newList = [...oldList, newFavorite];
+    }
+
+    setFavoritosList(newList);
+  }
+
+  // Funciones del Modal
+
+  // Cerrar Modal
+
+  // Llamada a la API
+  useEffect(() => {
+    if (query.trim() === '') {
+      setShowData([]);
+      return;
+    }
+
+    const URL = `https://api.tvmaze.com/search/shows?q=${query}`
+
+    fetch(URL)
+      .then(result => result.json())
+      .then(data => setShowData(data))
+      .catch(error => console.error("Error accediendo a los datos:", error))
+
+  }, [query]);
 
   return (
     <div className='main'>
       <div className='left-section'>
         <Buscador onSearch={handleSearch}></Buscador>
         <div className='results-container'>
-          <ShowCard></ShowCard>
+          {showData.map((item) => (
+            <ShowCard
+              key={item.show.id}
+              showData={item.show}
+              onFavorite={handleFavorite}
+              isFavorite={favoritosList.some(fav => fav.id === item.show.id)}
+            />
+          ))}
         </div>
 
       </div>
