@@ -1,5 +1,6 @@
 import '../styles/Favoritos.css'
 
+// Recibe favoritosList desde el padre.
 export default function Favoritos({ favoritosList }) {
     return (
         <div className="favoritos">

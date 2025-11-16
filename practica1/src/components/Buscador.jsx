@@ -4,10 +4,13 @@ import { useState } from 'react'
 
 export default function Buscador({ onSearch }) {
 
+    // Lo que el usuario escribe.
     const [query, setQuery] = useState('')
 
+    // Cuando el usuario envía el formulario.
     function handleSubmit(e) {
         e.preventDefault()
+        // Llamamos al padre y le pasamos lo que el usuario ha escrito.
         onSearch(query)
     }
 
